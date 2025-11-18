@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/steel"
+    tools:context=".fragments.WIPFilterFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomButtons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- LIMIT -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLimit"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:hint=" Set Limit"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/edit_text_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- WIP -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWIP"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter WIP"
+                android:padding="10dp"
+                android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/etLimit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- MEANING -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMeaning"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Meaning"
+                android:padding="10dp"
+                android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/etWIP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- SAMPLE -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSampleSen"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Sample Sentence"
+                android:padding="10dp"
+                android:background="@drawable/edit_text_bg"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/etMeaning"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- CATEGORY -->
+            <LinearLayout
+                android:id="@+id/llCategory"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/etSampleSen">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter by Category"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoryRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"/>
+            </LinearLayout>
+
+            <!-- TAG TITLE -->
+            <TextView
+                android:id="@+id/tvTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter by Tags"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/llCategory"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- TAG LIST -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:listitem="@layout/checkbox_item_layout"
+                app:spanCount="3"
+                app:layout_constraintTop_toBottomOf="@id/tvTags"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- TIMESTAMP SECTION -->
+            <LinearLayout
+                android:id="@+id/timestampSection"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                app:layout_constraintTop_toBottomOf="@id/rvList">
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter by Timestamps"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <!-- CREATED FROM -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Created From"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etCreatedFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+
+                <!-- CREATED TO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Created To"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etCreatedTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+
+                <!-- UPDATED FROM -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Updated From"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etUpdatedFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+
+                <!-- UPDATED TO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Updated To"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etUpdatedTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+
+                <!-- UPLOADED FROM -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uploaded From"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etUploadedFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+
+                <!-- UPLOADED TO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uploaded To"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/etUploadedTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:hint="dd/MM/yyyy HH:mm:ss"/>
+            </LinearLayout>
+
+
+            <!-- COUNTS TITLE -->
+            <TextView
+                android:id="@+id/tvCounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter by Counts"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="26dp"
+                app:layout_constraintTop_toBottomOf="@id/timestampSection"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <!-- READ COUNT -->
+            <LinearLayout
+                android:id="@+id/readCountSection"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvCounts">
+
+                <!-- Operator Spinner -->
+                <Spinner
+                    android:id="@+id/readSpinner"
+                    android:layout_width="60dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical" />
+
+                <!-- Minus Button -->
+                <Button
+                    android:id="@+id/btnReadMinus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_button"
+                    android:text="−"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="0dp" />
+
+                <!-- Text Field -->
+                <EditText
+                    android:id="@+id/etReadCount"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:hint="Enter Read Count"
+                    android:inputType="number"
+                    android:background="@drawable/edit_text_bg"
+                    android:textColor="@color/black"
+                    android:padding="12dp" />
+
+                <!-- Plus Button -->
+                <Button
+                    android:id="@+id/btnReadPlus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_button"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="0dp" />
+
+            </LinearLayout>
+
+            <!-- VIEWED COUNT -->
+            <LinearLayout
+                android:id="@+id/viewCountSection"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/readCountSection">
+
+                <!-- Operator Spinner -->
+                <Spinner
+                    android:id="@+id/viewedSpinner"
+                    android:layout_width="60dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical" />
+
+                <!-- Minus Button -->
+                <Button
+                    android:id="@+id/btnViewedMinus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_button"
+                    android:text="−"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="0dp" />
+
+                <!-- Text Field -->
+                <EditText
+                    android:id="@+id/etViewedCount"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:hint="Enter Viewed Count"
+                    android:inputType="number"
+                    android:background="@drawable/edit_text_bg"
+                    android:textColor="@color/black"
+                    android:padding="12dp" />
+
+                <!-- Plus Button -->
+                <Button
+                    android:id="@+id/btnViewedPlus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_button"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="0dp" />
+
+            </LinearLayout>
+
+            <!-- TIMER -->
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Encountered After (HH:mm:ss)"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/viewCountSection"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTimer">
+
+                <TextView
+                    android:id="@+id/etTimer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/edit_text_bg"
+                    android:textColor="@color/black"
+                    android:hint="00:00:00"/>
+
+                <Button
+                    android:id="@+id/btnTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Pick"/>
+            </LinearLayout>
+
+            <!-- keep everything inside inner ConstraintLayout unchanged -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BOTTOM BUTTONS + Read Aloud toggle aligned at bottom -->
+    <LinearLayout
+        android:id="@+id/llBottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- SWITCH (left) -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read Aloud Only"
+            android:layout_marginEnd="16dp" />
+
+        <!-- CLEAR FILTER -->
+        <Button
+            android:id="@+id/btnClearFilters"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:text="CLEAR FILTER"
+            android:textAllCaps="false"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- APPLY FILTER -->
+        <Button
+            android:id="@+id/btnApplyFilter"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:text="APPLY FILTER"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

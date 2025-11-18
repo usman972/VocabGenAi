@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/carousel_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/wipCv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/silver"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <!-- CATEGORY LABEL -->
+            <TextView
+                android:id="@+id/txtWordType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Word"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- VIEWED COUNT -->
+            <TextView
+                android:id="@+id/txtViewCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/back_box"
+                android:padding="6dp"
+                android:text="Viewed 0 times"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- ENCOUNTERED COUNT -->
+            <TextView
+                android:id="@+id/txtReadCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/back_box"
+                android:padding="6dp"
+                android:text="Encountered 0 times"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                app:layout_constraintEnd_toEndOf="@id/txtViewCount"
+                app:layout_constraintTop_toBottomOf="@id/txtViewCount"/>
+
+            <!-- WORD -->
+            <TextView
+                android:id="@+id/txtWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Sample Word"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintTop_toBottomOf="@id/txtReadCount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- MEANING -->
+            <TextView
+                android:id="@+id/txtWordMeaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Meaning here..."
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/txtWord"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- SAMPLE SENTENCE LABEL -->
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Sample Sentence"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/txtWordMeaning"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- SAMPLE SENTENCE -->
+            <TextView
+                android:id="@+id/txtSampleSentence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Sample sentence..."
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/tv2"
+                app:layout_constraintStart_toStartOf="@id/tv2"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- TAGS LABEL -->
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Tags"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/txtSampleSentence"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- TAGS -->
+            <TextView
+                android:id="@+id/txtTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Sports, Casual"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/tv3"
+                app:layout_constraintStart_toStartOf="@id/tv3"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- ⭐⭐⭐ TIMESTAMPS SECTION ⭐⭐⭐ -->
+            <TextView
+                android:id="@+id/txtCreatedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Created: --"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_medium"
+                app:layout_constraintTop_toBottomOf="@id/txtTags"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtUpdatedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Updated: --"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_medium"
+                app:layout_constraintTop_toBottomOf="@id/txtCreatedAt"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
