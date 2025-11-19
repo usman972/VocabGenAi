@@ -414,7 +414,7 @@
                     android:id="@+id/btnTimer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Pick"/>
+                    android:text="Add Timer"/>
             </LinearLayout>
 
             <!-- keep everything inside inner ConstraintLayout unchanged -->
