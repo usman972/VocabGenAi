@@ -422,9 +422,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
- <!-- BOTTOM CONTAINER -->
+<!-- BOTTOM CONTAINER -->
 <LinearLayout
-    android:id="@+id/llBottomButtonsContainer"
+    android:id="@+id/llBottomButtons"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -477,6 +477,7 @@
     </LinearLayout>
 
 </LinearLayout>
+
 
 
 
