@@ -422,25 +422,38 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- BOTTOM BUTTONS + Read Aloud toggle aligned at bottom -->
+   <!-- BOTTOM CONTAINER -->
+<LinearLayout
+    android:id="@+id/llBottomButtonsContainer"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <!-- ROW 1: Switch -->
     <LinearLayout
-        android:id="@+id/llBottomButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:gravity="center_vertical">
 
-        <!-- SWITCH (left) -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchMaterial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Read Aloud Only"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"/>
+    </LinearLayout>
 
-        <!-- CLEAR FILTER -->
+    <!-- ROW 2: Clear + Apply Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
         <Button
             android:id="@+id/btnClearFilters"
             android:layout_width="0dp"
@@ -449,11 +462,9 @@
             android:background="@drawable/rounded_button"
             android:text="CLEAR FILTER"
             android:textAllCaps="false"
-            android:singleLine="true"
             android:textColor="@android:color/white"
             android:layout_marginEnd="12dp"/>
 
-        <!-- APPLY FILTER -->
         <Button
             android:id="@+id/btnApplyFilter"
             android:layout_width="0dp"
@@ -461,10 +472,11 @@
             android:layout_weight="1"
             android:background="@drawable/rounded_button"
             android:text="APPLY FILTER"
-            android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="@android:color/white"/>
     </LinearLayout>
+
+</LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
