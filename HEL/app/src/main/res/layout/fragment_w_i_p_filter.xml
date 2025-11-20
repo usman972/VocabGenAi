@@ -283,42 +283,42 @@
 
                 <!-- Minus Button -->
                 <Button
-                    android:id="@+id/btnReadMinus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/circle_button"
-                    android:text="−"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="0dp" />
+    android:id="@+id/btnReadMinus"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/circle_button"
+    android:text="−"
+    android:textSize="18sp"
+    android:textColor="@android:color/white"
+    android:fontFamily="sans-serif-medium"
+    android:padding="0dp" />
 
-                <!-- Text Field -->
-                <EditText
-                    android:id="@+id/etReadCount"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:hint="Enter Read Count"
-                    android:inputType="number"
-                    android:background="@drawable/edit_text_bg"
-                    android:textColor="@color/black"
-                    android:padding="12dp" />
+<!-- Text Field -->
+<EditText
+    android:id="@+id/etReadCount"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:layout_weight="1"
+    android:layout_marginStart="8dp"
+    android:hint="Encountered Count"
+    android:inputType="number"
+    android:background="@drawable/edit_text_bg"
+    android:textColor="@color/black"
+    android:padding="8dp" />
 
-                <!-- Plus Button -->
-                <Button
-                    android:id="@+id/btnReadPlus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/circle_button"
-                    android:text="+"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="0dp" />
+<!-- Plus Button -->
+<Button
+    android:id="@+id/btnReadPlus"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/circle_button"
+    android:text="+"
+    android:textSize="18sp"
+    android:textColor="@android:color/white"
+    android:fontFamily="sans-serif-medium"
+    android:padding="0dp" />
 
             </LinearLayout>
 
@@ -339,43 +339,43 @@
                     android:layout_gravity="center_vertical" />
 
                 <!-- Minus Button -->
-                <Button
-                    android:id="@+id/btnViewedMinus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/circle_button"
-                    android:text="−"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="0dp" />
+              <Button
+    android:id="@+id/btnViewedMinus"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/circle_button"
+    android:text="−"
+    android:textSize="18sp"
+    android:textColor="@android:color/white"
+    android:fontFamily="sans-serif-medium"
+    android:padding="0dp" />
 
-                <!-- Text Field -->
-                <EditText
-                    android:id="@+id/etViewedCount"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:hint="Enter Viewed Count"
-                    android:inputType="number"
-                    android:background="@drawable/edit_text_bg"
-                    android:textColor="@color/black"
-                    android:padding="12dp" />
+<!-- Text Field -->
+<EditText
+    android:id="@+id/etViewedCount"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:layout_weight="1"
+    android:layout_marginStart="8dp"
+    android:hint="Viewed Count"
+    android:inputType="number"
+    android:background="@drawable/edit_text_bg"
+    android:textColor="@color/black"
+    android:padding="8dp" />
 
-                <!-- Plus Button -->
-                <Button
-                    android:id="@+id/btnViewedPlus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/circle_button"
-                    android:text="+"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="0dp" />
+<!-- Plus Button -->
+<Button
+    android:id="@+id/btnViewedPlus"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/circle_button"
+    android:text="+"
+    android:textSize="18sp"
+    android:textColor="@android:color/white"
+    android:fontFamily="sans-serif-medium"
+    android:padding="0dp" />
 
             </LinearLayout>
 
