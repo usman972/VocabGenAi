@@ -89,35 +89,39 @@
 //     fun filterByUploadedRange(start: Long, end: Long) = wipRepository?.filterByUploadedRange(start, end)
 // }
 
-
 package com.rameez.hel.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.rameez.hel.model.WIPItem
+import com.rameez.hel.model.WIPModel
 import com.rameez.hel.repository.WIPRepository
 import kotlinx.coroutines.launch
 
 class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
 
-    private val _wips = MutableLiveData<List<WIPItem>>()
-    val wips: LiveData<List<WIPItem>> get() = _wips
+    private val _wips = MutableLiveData<List<WIPModel>>()
+    val wips: LiveData<List<WIPModel>> get() = _wips
 
-    fun getWIPs(): LiveData<List<WIPItem>>? {
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> get() = _loading
+
+    fun getWIPs() {
         viewModelScope.launch {
+            _loading.value = true
             val data = repository.getAllWIPs()
             _wips.postValue(data)
+            _loading.value = false
         }
-        return _wips
     }
 
-    fun getWIPById(id: String): WIPItem? {
+    fun getWIPById(id: String): WIPModel? {
         return _wips.value?.find { it.id == id }
     }
 
-    // NEW METHOD: Increment viewed count (called automatically when flashcard is displayed)
+    // Increment viewed count (called automatically when flashcard is displayed)
     fun incrementViewedCount(wipId: String) {
         viewModelScope.launch {
             val currentWip = getWIPById(wipId)
@@ -139,7 +143,7 @@ class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
         }
     }
 
-    // NEW METHOD: Increment encountered count (called manually via + button)
+    // Increment encountered count (called manually via + button)
     fun incrementEncounteredCount(wipId: String) {
         viewModelScope.launch {
             val currentWip = getWIPById(wipId)
@@ -161,7 +165,7 @@ class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
         }
     }
 
-    // NEW METHOD: Decrement encountered count (called manually via - button)
+    // Decrement encountered count (called manually via - button)
     fun decrementEncounteredCount(wipId: String) {
         viewModelScope.launch {
             val currentWip = getWIPById(wipId)
@@ -172,7 +176,7 @@ class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
                 id = wipId,
                 encounteredCount = newCount,
                 encounteredLastUpdatedAt = currentTime,
-                firstEncounteredAt = currentWip?.firstEncounteredAt // Don't change first time
+                firstEncounteredAt = currentWip?.firstEncounteredAt
             )
 
             // Refresh the list
@@ -180,33 +184,14 @@ class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
         }
     }
 
-    // NEW METHOD: Decrement viewed count (if needed manually)
-    fun decrementViewedCount(wipId: String) {
-        viewModelScope.launch {
-            val currentWip = getWIPById(wipId)
-            val newCount = ((currentWip?.viewedCount ?: 0) - 1).coerceAtLeast(0)
-            val currentTime = System.currentTimeMillis()
-
-            repository.updateWIPCounts(
-                id = wipId,
-                viewedCount = newCount,
-                viewedLastUpdatedAt = currentTime,
-                firstViewedAt = currentWip?.firstViewedAt // Don't change first time
-            )
-
-            // Refresh the list
-            getWIPs()
-        }
-    }
-
-    fun insertWIP(wipItem: WIPItem) {
+    fun insertWIP(wipItem: WIPModel) {
         viewModelScope.launch {
             repository.insertWIP(wipItem)
             getWIPs()
         }
     }
 
-    fun updateWIP(wipItem: WIPItem) {
+    fun updateWIP(wipItem: WIPModel) {
         viewModelScope.launch {
             repository.updateWIP(wipItem)
             getWIPs()
@@ -218,5 +203,76 @@ class WIPViewModel(private val repository: WIPRepository) : ViewModel() {
             repository.deleteWIP(wipId)
             getWIPs()
         }
+    }
+
+    fun getFilteredWIPs(
+        categories: List<String>? = null,
+        tags: List<String>? = null,
+        readCount: Float? = null,
+        readOperator: String? = null,
+        viewedCount: Float? = null,
+        viewedOperator: String? = null,
+        word: String? = null,
+        meaning: String? = null,
+        sampleSentence: String? = null,
+        encounteredCount: Int? = null,
+        encounteredOperator: String? = null,
+        encounteredLastUpdatedFrom: Long? = null,
+        encounteredLastUpdatedTo: Long? = null,
+        encounteredLastUpdatedOperator: String? = null,
+        viewedCountValue: Int? = null,
+        viewedCountOperator: String? = null,
+        viewedLastUpdatedFrom: Long? = null,
+        viewedLastUpdatedTo: Long? = null,
+        viewedLastUpdatedOperator: String? = null,
+        firstEncounteredFrom: Long? = null,
+        firstEncounteredTo: Long? = null,
+        firstEncounteredOperator: String? = null,
+        firstViewedFrom: Long? = null,
+        firstViewedTo: Long? = null,
+        firstViewedOperator: String? = null
+    ) {
+        viewModelScope.launch {
+            _loading.value = true
+            val data = repository.getFilteredWIPs(
+                categories = categories,
+                tags = tags,
+                readCount = readCount,
+                readOperator = readOperator,
+                viewedCount = viewedCount,
+                viewedOperator = viewedOperator,
+                word = word,
+                meaning = meaning,
+                sampleSentence = sampleSentence,
+                encounteredCount = encounteredCount,
+                encounteredOperator = encounteredOperator,
+                encounteredLastUpdatedFrom = encounteredLastUpdatedFrom,
+                encounteredLastUpdatedTo = encounteredLastUpdatedTo,
+                encounteredLastUpdatedOperator = encounteredLastUpdatedOperator,
+                viewedCountValue = viewedCountValue,
+                viewedCountOperator = viewedCountOperator,
+                viewedLastUpdatedFrom = viewedLastUpdatedFrom,
+                viewedLastUpdatedTo = viewedLastUpdatedTo,
+                viewedLastUpdatedOperator = viewedLastUpdatedOperator,
+                firstEncounteredFrom = firstEncounteredFrom,
+                firstEncounteredTo = firstEncounteredTo,
+                firstEncounteredOperator = firstEncounteredOperator,
+                firstViewedFrom = firstViewedFrom,
+                firstViewedTo = firstViewedTo,
+                firstViewedOperator = firstViewedOperator
+            )
+            _wips.postValue(data)
+            _loading.value = false
+        }
+    }
+}
+
+class WIPViewModelFactory(private val repository: WIPRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(WIPViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return WIPViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
